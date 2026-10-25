@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Основные метатеги -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#082b48">
+  <meta name="description" content="SkiPro — лыжи, экипировка и профессиональный сервис для лыжных гонок и биатлона.">
+  <meta name="keywords" content="SkiPro, лыжи, биатлон, лыжные гонки, экипировка, сервис лыж, спортивный магазин">
+  <meta name="author" content="SkiPro">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://skipro.example/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23082b48'/%3E%3Ctext x='50' y='72' font-size='64' text-anchor='middle' fill='%23ff5a36' font-family='Arial, sans-serif' font-weight='700'%3ES%3C/text%3E%3C/svg%3E">
+  <!-- Социальные метатеги (Open Graph / Twitter) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SkiPro">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://skipro.example/">
+  <meta property="og:title" content="SkiPro — скорость начинается здесь">
+  <meta property="og:description" content="SkiPro — лыжи, экипировка и профессиональный сервис для лыжных гонок и биатлона.">
+  <meta property="og:image" content="https://skipro.example/og-cover.jpg">
+  <meta property="og:image:alt" content="SkiPro — лыжи, экипировка и сервис">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SkiPro — скорость начинается здесь">
+  <meta name="twitter:description" content="SkiPro — лыжи, экипировка и профессиональный сервис для лыжных гонок и биатлона.">
+  <title>SkiPro — скорость начинается здесь</title>
+  <style>
+    /* 1. Цветовая система, типографика и базовая сетка */
+    :root {
+      --ice: #082b48;
+      --ice-light: #125176;
+      --snow: #ffffff;
+      --frost: #eef5f8;
+      --muted: #617789;
+      --line: #dce7ee;
+      --accent: #ff5a36;
+      --accent-dark: #dd3f21;
+      --radius: 20px;
+      --space: clamp(64px, 8vw, 112px);
+      --shadow: 0 12px 34px rgba(8, 43, 72, .09);
+      --container: 1200px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ice); background: var(--snow); line-height: 1.6; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .container { width: min(calc(100% - 40px), var(--container)); margin-inline: auto; }
+    .section { padding-block: var(--space); }
+    .section--soft { background: var(--frost); }
+    .eyebrow { color: var(--accent); font-size: .75rem; letter-spacing: .17em; text-transform: uppercase; font-weight: 800; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.14; letter-spacing: -.04em; }
+    h1 { font-size: clamp(3rem, 6.6vw, 6.3rem); max-width: 850px; margin-bottom: 26px; }
+    h2 { font-size: clamp(2.05rem, 4vw, 3.6rem); margin-bottom: 16px; }
+    h3 { font-size: 1.22rem; margin-bottom: 8px; }
+    .lead { color: var(--muted); font-size: 1.07rem; max-width: 650px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 40px; }
+    .section-head p { margin-bottom: 0; }
+    .btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid transparent; border-radius: 999px; min-height: 52px; padding: 12px 24px; font-weight: 800; cursor: pointer; transition: transform .2s, background .2s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(8, 43, 72, .16); }
+    .btn--primary { background: var(--accent); color: white; }
+    .btn--primary:hover { background: var(--accent-dark); }
+    .btn--outline { color: var(--ice); background: white; border-color: var(--line); }
+    .btn--glass { color: white; border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.09); }
+    .btn--small { min-height: 44px; padding: 9px 17px; font-size: .9rem; }
+    .pill { display: inline-block; border: 1px solid rgba(255,255,255,.4); border-radius: 999px; color: #e0eff8; padding: 7px 14px; font-weight: 700; font-size: .77rem; letter-spacing: .08em; text-transform: uppercase; }
+
+    /* Доступность и семантика: пропуск к содержимому, сброс списков и полей формы */
+    .skip-link { position: absolute; top: -120px; left: 18px; z-index: 300; padding: 12px 22px; border-radius: 12px; background: var(--ice); color: white; font-weight: 800; transition: top .2s ease; }
+    .skip-link:focus, .skip-link:focus-visible { top: 16px; outline: 3px solid var(--accent); outline-offset: 3px; }
+    address { font-style: normal; }
+    figure.about__panel { margin: 0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+    .hero__stats, .brands, .services-grid { list-style: none; margin: 0; padding-left: 0; }
+    .contact-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+
+    /* 2. Липкая шапка и мобильная навигация */
+    .header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    .header__inner { display: flex; align-items: center; min-height: 76px; gap: 22px; }
+    .logo { font-size: 1.7rem; font-weight: 950; line-height: 1; letter-spacing: -.075em; white-space: nowrap; }
+    .logo span { color: var(--accent); }
+    .nav { display: flex; align-items: center; gap: clamp(12px, 2vw, 28px); margin-left: auto; }
+    .nav a { font-size: .9rem; font-weight: 700; transition: color .2s; }
+    .nav a:hover { color: var(--accent); }
+    .cart { position: relative; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 9px 13px; background: white; color: var(--ice); font-weight: 800; cursor: pointer; white-space: nowrap; }
+    .cart__count { display: grid; place-items: center; height: 23px; min-width: 23px; padding-inline: 5px; background: var(--accent); color: white; border-radius: 50px; font-size: .75rem; }
+    .menu-toggle { display: none; border: 0; background: transparent; color: var(--ice); font-size: 1.5rem; cursor: pointer; margin-left: auto; padding: 8px; }
+
+    /* 3. Главный экран: только CSS, без внешних изображений */
+    .hero { position: relative; overflow: hidden; min-height: 650px; display: flex; align-items: center; background: linear-gradient(118deg, #061e35 3%, #0c4468 61%, #087f9e 100%); color: white; }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .27; background: repeating-linear-gradient(133deg, transparent 0 120px, rgba(255,255,255,.12) 121px 122px, transparent 123px 205px); }
+    .hero::after { content: ""; position: absolute; width: 650px; height: 650px; border: 75px solid rgba(255,255,255,.06); border-radius: 50%; right: -200px; top: -170px; box-shadow: 0 0 0 90px rgba(255,255,255,.035), 0 0 0 190px rgba(255,255,255,.025); }
+    .hero__content { position: relative; z-index: 1; padding-block: 100px 115px; }
+    .hero h1 { margin-top: 20px; }
+    .hero h1 em { color: #83e5f4; font-style: normal; }
+    .hero p { max-width: 575px; font-size: 1.1rem; color: #d4e6f0; margin-bottom: 30px; }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero__stats { display: flex; flex-wrap: wrap; gap: 40px; margin-top: 66px; }
+    .hero__stats strong { display: block; font-size: 1.55rem; color: white; line-height: 1.2; }
+    .hero__stats span { font-size: .84rem; color: #b9d7e6; }
+
+    /* 4. Преимущества и категории */
+    .about__layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center; }
+    .about__panel { position: relative; display: grid; place-content: center; text-align: center; min-height: 370px; border-radius: var(--radius); overflow: hidden; background: radial-gradient(circle at 70% 20%, #3b91b1, transparent 45%), linear-gradient(145deg, #082c4a, #0e5c80); color: white; }
+    .target { width: 180px; height: 180px; border-radius: 50%; border: 24px solid white; margin: auto; background: var(--accent); box-shadow: inset 0 0 0 29px var(--ice), inset 0 0 0 57px white, 0 24px 40px rgba(0,0,0,.2); }
+    .about__panel p { margin: 26px 0 0; font-size: .85rem; text-transform: uppercase; font-weight: 900; letter-spacing: .19em; }
+    .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 30px; }
+    .benefit__icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; background: #e5f2f7; color: var(--ice-light); font-size: 1.4rem; margin-bottom: 14px; }
+    .benefit p { font-size: .9rem; color: var(--muted); margin: 0; }
+    .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .category { min-height: 230px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: white; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+    .category:hover, .product:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .category__glyph { width: 84px; height: 84px; display: grid; place-items: center; border-radius: 18px; background: linear-gradient(145deg, #e2f4fc, #c6dfe9); font-size: 2.8rem; }
+    .category__bottom { display: flex; align-items: end; justify-content: space-between; gap: 10px; }
+    .category h3 { max-width: 220px; margin: 0; }
+    .category__arrow { font-size: 1.65rem; color: var(--accent); }
+
+    /* 5. Карточки товаров и сервис */
+    .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+    .product { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: white; transition: transform .2s, box-shadow .2s; }
+    .product__image { min-height: 225px; padding: 20px; display: grid; place-items: center; position: relative; background: linear-gradient(150deg, #eef7fa, #d7e7ee); }
+    .product__symbol { font-size: 4rem; transform: rotate(-14deg); filter: drop-shadow(10px 15px 9px rgba(8,43,72,.15)); }
+    .product__tag { position: absolute; top: 16px; left: 16px; border-radius: 100px; background: white; padding: 5px 10px; font-size: .72rem; font-weight: 900; }
+    .product__body { padding: 22px; }
+    .product__brand { text-transform: uppercase; font-size: .72rem; letter-spacing: .13em; font-weight: 900; color: var(--muted); }
+    .product h3 { font-size: 1.06rem; margin: 8px 0 18px; min-height: 2.5em; }
+    .product__price { display: block; font-size: 1.35rem; font-weight: 900; margin-bottom: 16px; }
+    .product .btn { width: 100%; }
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .service { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
+    .service__num { color: var(--accent); font-weight: 900; letter-spacing: .1em; margin-bottom: 40px; }
+    .service p { color: var(--muted); font-size: .91rem; margin-bottom: 0; }
+
+    /* 6. Партнёры, отзывы и контакты */
+    .brands { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; }
+    .brand { display: grid; place-items: center; min-height: 105px; border: 1px solid var(--line); border-radius: 16px; font-size: clamp(1.4rem, 2.7vw, 2rem); font-weight: 950; letter-spacing: -.06em; }
+    .quote { margin-top: 30px; padding: 28px 32px; border-left: 4px solid var(--accent); background: var(--frost); border-radius: 0 15px 15px 0; }
+    .quote p { margin-bottom: 9px; font-size: 1.05rem; }
+    .quote cite { color: var(--muted); font-style: normal; font-size: .88rem; }
+    .contacts { background: var(--ice); color: white; }
+    .contacts__layout { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
+    .contacts .lead { color: #bfd3df; }
+    .contact-item { margin: 25px 0; }
+    .contact-item small { display: block; color: #9db9cb; margin-bottom: 3px; }
+    .contact-item a:hover { color: #ff947c; }
+    .contact-form { background: white; border-radius: var(--radius); padding: 34px; color: var(--ice); }
+    .contact-form label { display: block; font-size: .86rem; font-weight: 800; margin-bottom: 7px; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 12px 14px; background: #f5f9fb; border: 1px solid var(--line); border-radius: 10px; color: var(--ice); margin-bottom: 18px; }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form .btn { width: 100%; }
+    .form-note { margin: 12px 0 0; color: var(--muted); font-size: .75rem; }
+    .footer { padding: 24px 0; background: #041c30; color: #c4d8e4; }
+    .footer__inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: .85rem; }
+    .footer a:hover { color: white; }
+    .footer__social { display: flex; gap: 20px; }
+    .toast { position: fixed; right: 20px; bottom: 20px; z-index: 200; max-width: min(380px, calc(100% - 40px)); background: var(--ice); color: white; padding: 14px 19px; border-radius: 13px; box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .25s, transform .25s; }
+    .toast.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* 7. Адаптивность: планшеты до 1024px */
+    @media (max-width: 1023px) {
+      .menu-toggle { display: block; }
+      .nav { display: none; position: absolute; left: 0; right: 0; top: 76px; padding: 20px; border-bottom: 1px solid var(--line); background: white; box-shadow: var(--shadow); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav.is-open { display: flex; }
+      .nav a { padding: 11px 4px; }
+      .header__inner .cart { margin-left: 0; }
+      .about__layout { gap: 32px; }
+      .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-grid, .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contacts__layout { gap: 35px; }
+    }
+    /* 8. Адаптивность: смартфоны до 767px */
+    @media (max-width: 767px) {
+      .container { width: min(calc(100% - 32px), var(--container)); }
+      .header__inner { min-height: 68px; gap: 12px; }
+      .nav { top: 68px; }
+      .logo { font-size: 1.45rem; }
+      .cart { padding: 8px 10px; font-size: .85rem; }
+      .hero { min-height: 610px; }
+      .hero__content { padding-block: 75px 80px; }
+      .hero__stats { gap: 22px; margin-top: 48px; }
+      .hero__stats strong { font-size: 1.3rem; }
+      .section-head { align-items: start; flex-direction: column; gap: 8px; }
+      .about__layout, .contacts__layout { grid-template-columns: 1fr; }
+      .about__panel { min-height: 295px; }
+      .target { width: 150px; height: 150px; }
+      .catalog-grid, .brands { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .brand:last-child { grid-column: 1 / -1; }
+      .category { min-height: 185px; padding: 19px; }
+      .category__glyph { width: 62px; height: 62px; font-size: 2rem; }
+      .category h3 { font-size: 1rem; }
+      .product-grid, .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .product__image { min-height: 160px; }
+      .product__symbol { font-size: 3rem; }
+      .product__body { padding: 14px; }
+      .product h3 { font-size: .94rem; }
+      .product__price { font-size: 1.08rem; }
+      .product .btn { padding-inline: 8px; font-size: .8rem; }
+      .service { padding: 20px; }
+      .service__num { margin-bottom: 20px; }
+      .contact-form { padding: 23px; }
+    }
+    @media (max-width: 380px) {
+      .benefits { grid-template-columns: 1fr; }
+      .product-grid, .services-grid { grid-template-columns: 1fr; }
+      .hero__actions .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="#home" aria-label="SkiPro — на главную">Ski<span>Pro.</span></a>
+      <nav class="nav" id="navigation" aria-label="Основная навигация">
+        <a href="#about">О нас</a><a href="#catalog">Каталог</a><a href="#products">Хиты</a>
+        <a href="#services">Сервис</a><a href="#brands">Бренды</a><a href="#contacts">Контакты</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-controls="navigation" aria-expanded="false" aria-label="Открыть меню">☰</button>
+      <button class="cart" id="cartButton" type="button" aria-label="Корзина: 0 товаров. Просмотреть содержимое корзины">🛒 <span>Корзина</span><span class="cart__count" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Главный экран -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__content">
+        <span class="pill">Экипировка для тех, кто идёт дальше</span>
+        <h1 id="hero-title">Твоя скорость.<br><em>Твоя дистанция.</em></h1>
+        <p>Лыжи, ботинки и экипировка для гонок и биатлона. Поможем подобрать идеальный комплект — от первой тренировки до стартового подиума.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#catalog">Смотреть каталог <span aria-hidden="true">↗</span></a>
+          <a class="btn btn--glass" href="#contacts" data-subject="Помощь с подбором инвентаря">Подобрать инвентарь</a>
+        </div>
+        <ul class="hero__stats" aria-label="Наши преимущества">
+          <li><strong>Pro</strong><span>Подбор по уровню</span></li>
+          <li><strong>XC + Biathlon</strong><span>Две специализации</span></li>
+          <li><strong>365</strong><span>Дней любви к лыжам</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- О магазине -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container about__layout">
+        <figure class="about__panel" role="img" aria-label="Биатлонная мишень SkiPro"><div class="target" aria-hidden="true"></div><p>Focus on the finish</p></figure>
+        <div>
+          <span class="eyebrow">Команда SkiPro</span>
+          <h2 id="about-title">Мы знаем цену каждой секунды</h2>
+          <p class="lead">SkiPro — специализированный магазин для поклонников лыжных гонок и биатлона. Мы собрали экипировку и сервис, которые помогают увереннее чувствовать себя на трассе.</p>
+          <div class="benefits">
+            <article class="benefit"><span class="benefit__icon" aria-hidden="true">◇</span><h3>Экспертный подбор</h3><p>С учётом техники, уровня подготовки и задач спортсмена.</p></article>
+            <article class="benefit"><span class="benefit__icon" aria-hidden="true">✦</span><h3>Проверенные бренды</h3><p>Надёжный инвентарь для тренировок и соревнований.</p></article>
+            <article class="benefit"><span class="benefit__icon" aria-hidden="true">↗</span><h3>Сервис лыж</h3><p>Подготовка скользящей поверхности и обслуживание.</p></article>
+            <article class="benefit"><span class="benefit__icon" aria-hidden="true">◎</span><h3>Для любого старта</h3><p>Решения для юных спортсменов и опытных гонщиков.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Категории каталога -->
+    <section class="section section--soft" id="catalog" aria-labelledby="catalog-title">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">Подбери свой комплект</span><h2 id="catalog-title">Каталог экипировки</h2><p class="lead">Всё для уверенного движения по трассе — от лыж до финишной экипировки.</p></div></div>
+        <div class="catalog-grid">
+          <a class="category" href="#products"><div class="category__glyph" aria-hidden="true">⛷</div><div class="category__bottom"><h3>Коньковые и классические лыжи</h3><span class="category__arrow" aria-hidden="true">↗</span></div></a>
+          <a class="category" href="#products"><div class="category__glyph" aria-hidden="true">◎</div><div class="category__bottom"><h3>Биатлонные лыжи</h3><span class="category__arrow" aria-hidden="true">↗</span></div></a>
+          <a class="category" href="#products"><div class="category__glyph" aria-hidden="true">⚙</div><div class="category__bottom"><h3>Лыжные крепления</h3><span class="category__arrow" aria-hidden="true">↗</span></div></a>
+          <a class="category" href="#products"><div class="category__glyph" aria-hidden="true">◈</div><div class="category__bottom"><h3>Лыжные ботинки</h3><span class="category__arrow" aria-hidden="true">↗</span></div></a>
+          <a class="category" href="#products"><div class="category__glyph" aria-hidden="true">╱</div><div class="category__bottom"><h3>Лыжные палки</h3><span class="category__arrow" aria-hidden="true">↗</span></div></a>
+          <a class="category" href="#products"><div class="category__glyph" aria-hidden="true">❄</div><div class="category__bottom"><h3>Экипировка и парафины</h3><span class="category__arrow" aria-hidden="true">↗</span></div></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Демонстрационные товары: цены иллюстративные -->
+    <section class="section" id="products" aria-labelledby="products-title">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">Выбор спортсменов</span><h2 id="products-title">Хиты сезона</h2><p class="lead">Популярные позиции для тренировок и стартов. Товары и цены представлены для демонстрации.</p></div><a class="btn btn--outline btn--small" href="#contacts">Уточнить наличие <span aria-hidden="true">↗</span></a></div>
+        <div class="product-grid">
+          <article class="product" data-id="ski-1" data-name="Speedmax Skate" data-price="58990"><div class="product__image"><span class="product__tag">Хит</span><span class="product__symbol" aria-hidden="true">⛷</span></div><div class="product__body"><span class="product__brand">Fischer</span><h3>Speedmax Skate</h3><strong class="product__price">58 990 ₽</strong><button class="btn btn--primary btn--small add-to-cart" type="button">В корзину +</button></div></article>
+          <article class="product" data-id="boot-1" data-name="S/Race Classic" data-price="24990"><div class="product__image"><span class="product__tag">Топ</span><span class="product__symbol" aria-hidden="true">◈</span></div><div class="product__body"><span class="product__brand">Salomon</span><h3>S/Race Classic</h3><strong class="product__price">24 990 ₽</strong><button class="btn btn--primary btn--small add-to-cart" type="button">В корзину +</button></div></article>
+          <article class="product" data-id="ski-2" data-name="X-IUM Skate" data-price="42990"><div class="product__image"><span class="product__tag">Выбор Pro</span><span class="product__symbol" aria-hidden="true">❄</span></div><div class="product__body"><span class="product__brand">Rossignol</span><h3>X-IUM Skate</h3><strong class="product__price">42 990 ₽</strong><button class="btn btn--primary btn--small add-to-cart" type="button">В корзину +</button></div></article>
+          <article class="product" data-id="pole-1" data-name="Carbon Race Poles" data-price="11990"><div class="product__image"><span class="product__tag">Новинка</span><span class="product__symbol" aria-hidden="true">╱</span></div><div class="product__body"><span class="product__brand">SkiPro Selection</span><h3>Carbon Race Poles</h3><strong class="product__price">11 990 ₽</strong><button class="btn btn--primary btn--small add-to-cart" type="button">В корзину +</button></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Сервис -->
+    <section class="section section--soft" id="services" aria-labelledby="services-title"><div class="container"><div class="section-head"><div><span class="eyebrow">Мастерская SkiPro</span><h2 id="services-title">Сервис, который ускоряет</h2><p class="lead">От грамотной подготовки инвентаря зависит не меньше, чем от тренировок.</p></div></div><ul class="services-grid">
+      <li class="service"><div class="service__num">01 / PREP</div><h3>Подготовка лыж</h3><p>Обработка и настройка скользящей поверхности под особенности трассы.</p></li>
+      <li class="service"><div class="service__num">02 / WAX</div><h3>Парафинение</h3><p>Подбор смазки и нанесение парафина с учётом погодных условий.</p></li>
+      <li class="service"><div class="service__num">03 / FIT</div><h3>Бутфитинг</h3><p>Помощь с посадкой ботинок для комфорта и точного контроля.</p></li>
+      <li class="service"><div class="service__num">04 / FIX</div><h3>Ремонт инвентаря</h3><p>Диагностика и устранение типичных повреждений лыжного снаряжения.</p></li>
+    </ul></div></section>
+
+    <!-- Бренды и демонстрационный отзыв -->
+    <section class="section" id="brands" aria-labelledby="brands-title"><div class="container"><span class="eyebrow">Проверенные имена</span><h2 id="brands-title">Бренды, которым доверяют</h2><p class="lead">Знакомые спортсменам производители лыжного инвентаря. Упоминание брендов здесь не означает официального партнёрства.</p><ul class="brands"><li class="brand">FISCHER</li><li class="brand">ROSSIGNOL</li><li class="brand">SALOMON</li></ul><blockquote class="quote"><p>«Когда экипировка подобрана правильно, можно полностью сосредоточиться на технике и дистанции».</p><cite>Принцип SkiPro · демонстрационная цитата</cite></blockquote></div></section>
+
+    <!-- Контактная форма -->
+    <section class="section contacts" id="contacts" aria-labelledby="contacts-title"><div class="container contacts__layout"><div><span class="eyebrow">Связаться с нами</span><h2 id="contacts-title">Готов к своему следующему старту?</h2><p class="lead">Опиши задачу, и мы поможем определить, какой инвентарь подойдёт. Контакты ниже — демонстрационные, замените их перед публикацией.</p><address class="contact-item"><small>Адрес</small>Санкт-Петербург, адрес магазина уточняется</address><address class="contact-item"><small>Телефон (пример)</small><a href="tel:+78005553535">8 (800) 555-35-35</a></address><address class="contact-item"><small>Email (пример)</small><a href="mailto:hello@skipro.example">hello@skipro.example</a></address></div><form class="contact-form" id="contactForm" aria-describedby="formNote"><h3>Напишите нам</h3><fieldset><legend class="visually-hidden">Данные для заявки</legend><p class="lead">Откроем ваше почтовое приложение с готовым письмом.</p><label for="customerName">Ваше имя</label><input id="customerName" name="name" type="text" autocomplete="name" placeholder="Александр" required maxlength="80"><label for="customerEmail">Электронная почта</label><input id="customerEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="150"><label for="customerMessage">Что вас интересует?</label><textarea id="customerMessage" name="message" placeholder="Нужны лыжи для конькового хода..." required maxlength="2000"></textarea><button class="btn btn--primary" type="submit">Подготовить письмо <span aria-hidden="true">↗</span></button><p class="form-note" id="formNote">Форма не передаёт данные на сервер. Для реального приёма заявок подключите backend или сервис форм.</p></fieldset></form></div></section>
+  </main>
+
+  <footer class="footer"><div class="container footer__inner"><div>© <span id="year">2026</span> SkiPro. Демонстрационный сайт.</div><nav class="footer__social" aria-label="Дополнительные ссылки"><a href="#catalog">Каталог</a><a href="#services">Сервис</a><a href="#home">Наверх ↑</a></nav></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    "use strict";
+    // Мобильное меню: aria-expanded синхронизирован с видимостью.
+    const toggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("navigation");
+    function closeMenu() {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Открыть меню");
+      toggle.textContent = "☰";
+    }
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+      toggle.textContent = open ? "✕" : "☰";
+    });
+    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeMenu(); });
+
+    // Корзина хранится локально в браузере (демонстрация без оформления заказа).
+    const storageKey = "skipro-cart-v1";
+    let cart = [];
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
+      if (Array.isArray(saved)) cart = saved.filter(item => item && typeof item.name === "string" && Number.isFinite(item.price) && Number.isInteger(item.quantity) && item.quantity > 0);
+    } catch (error) { cart = []; }
+    const countElement = document.getElementById("cartCount");
+    const cartButton = document.getElementById("cartButton");
+    const toast = document.getElementById("toast");
+    let toastTimer;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("is-visible");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 3200);
+    }
+    const pluralPieces = count => {
+      const last10 = count % 10, last100 = count % 100;
+      if (last100 >= 11 && last100 <= 14) return "товаров";
+      if (last10 === 1) return "товар";
+      if (last10 >= 2 && last10 <= 4) return "товара";
+      return "товаров";
+    };
+    function refreshCart() {
+      const pieces = cart.reduce((total, item) => total + item.quantity, 0);
+      countElement.textContent = pieces;
+      cartButton.setAttribute("aria-label", `Корзина: ${pieces} ${pluralPieces(pieces)}. Просмотреть содержимое корзины`);
+      try { localStorage.setItem(storageKey, JSON.stringify(cart)); } catch (error) { /* В приватном режиме сохранение может быть недоступно. */ }
+    }
+    document.querySelectorAll(".add-to-cart").forEach(button => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".product");
+        const id = card.dataset.id;
+        const existing = cart.find(item => item.id === id);
+        if (existing) existing.quantity += 1;
+        else cart.push({ id, name: card.dataset.name, price: Number(card.dataset.price), quantity: 1 });
+        refreshCart();
+        showToast(`«${card.dataset.name}» добавлен в корзину`);
+      });
+    });
+    cartButton.addEventListener("click", () => {
+      if (!cart.length) return showToast("Корзина пока пуста");
+      const sum = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+      const pieces = cart.reduce((total, item) => total + item.quantity, 0);
+      showToast(`В корзине ${pieces} шт. · ${sum.toLocaleString("ru-RU")} ₽. Для заказа свяжитесь с нами.`);
+    });
+    refreshCart();
+
+    // CTA «Подобрать инвентарь» заполняет поле сообщения.
+    document.querySelectorAll("[data-subject]").forEach(link => {
+      link.addEventListener("click", () => { document.getElementById("customerMessage").value = link.dataset.subject; });
+    });
+
+    // Без сервера отправка осуществляется через стандартный mailto:.
+    document.getElementById("contactForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+      const name = document.getElementById("customerName").value.trim();
+      const email = document.getElementById("customerEmail").value.trim();
+      const message = document.getElementById("customerMessage").value.trim();
+      if (!name || !email || !message) return showToast("Заполните все поля формы");
+      const subject = encodeURIComponent(`Заявка SkiPro от ${name}`);
+      const body = encodeURIComponent(`Имя: ${name}\nEmail: ${email}\n\nСообщение:\n${message}`);
+      window.location.href = `mailto:hello@skipro.example?subject=${subject}&body=${body}`;
+      showToast("Открываем почтовое приложение для отправки письма");
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
