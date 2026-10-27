@@ -1,0 +1,50 @@
+
+name: Deploy static site
+
+# Запуск при изменениях в ветке main
+on:
+  push:
+    branches:
+      - main
+
+  # Дополнительная возможность ручного запуска
+  workflow_dispatch:
+
+# Необходимые разрешения
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Предотвращение конкурирующих публикаций
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # Получение файлов репозитория
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Настройка GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Подготовка файлов сайта
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+
+      # Публикация сайта
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
