@@ -328,7 +328,7 @@
 
       .menu-toggle { display: block; }
 
-      .nav { display: none; position: absolute; left: 0; right: 0; top: 76px; padding: 20px; border-bottom: 1px solid var(--line); background: white; box-shadow: var(--shadow); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; padding: 20px; padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); border-bottom: 1px solid var(--line); background: white; box-shadow: var(--shadow); flex-direction: column; align-items: stretch; gap: 0; }
 
       .nav.is-open { display: flex; }
 
@@ -354,7 +354,7 @@
 
       .header__inner { min-height: 68px; gap: 12px; }
 
-      .nav { top: 68px; }
+      .nav { top: 100%; }
 
       .logo { font-size: 1.45rem; }
 
@@ -429,7 +429,7 @@
 
     /* Ветка feature-responsive: предотвращение переполнений и улучшение
        отображения на мобильных устройствах в портретной и альбомной ориентации. */
-    body { min-width: 0; }
+    body { min-width: 0; overflow-x: clip; }
     .header__inner, .hero__content, .about__layout > *,
     .contacts__layout > *, .section-head > *, .benefit,
     .category, .service { min-width: 0; }
@@ -451,12 +451,15 @@
     }
 
     @media (max-width: 767px) {
+      html { scroll-padding-top: 76px; }
       h1 { font-size: clamp(2.35rem, 8.5vw, 4.2rem); }
       h2 { font-size: clamp(1.85rem, 6.5vw, 2.8rem); }
       .hero { min-height: 0; }
       .hero__content { padding-block: clamp(58px, 10vw, 85px); }
       .hero__stats { gap: 16px 24px; }
-      .nav { max-height: calc(100dvh - 68px); }
+      .section-head { margin-bottom: 26px; }
+      .nav { max-height: calc(100dvh - 68px); padding: 14px; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+      .nav a { padding: 9px 4px; }
       .hero::after { width: 430px; height: 430px; right: -250px; top: -95px; }
       .contacts__layout { gap: 30px; }
     }
@@ -483,18 +486,51 @@
     @media (orientation: landscape) and (max-height: 550px) and (max-width: 1023px) {
       .hero { min-height: 0; }
       .hero__content { padding-block: 36px 42px; }
+      h2 { font-size: clamp(1.55rem, 4.5vw, 2.5rem); }
       .hero h1 { font-size: clamp(2rem, 5.2vw, 3.35rem); margin: 12px 0 14px; }
       .hero p { max-width: 680px; font-size: .97rem; line-height: 1.45; margin-bottom: 16px; }
       .hero__stats { margin-top: 22px; gap: 14px 28px; }
       .hero__stats strong { font-size: 1.15rem; }
       .hero__actions .btn { min-height: 44px; padding: 9px 16px; }
-      .section { padding-block: 48px; }
-      .nav { max-height: calc(100dvh - 76px); }
+      .section { padding-block: 44px; }
+      .section-head { margin-bottom: 24px; }
+      .nav { max-height: calc(100dvh - 76px); padding: 12px; }
+      .nav a { padding: 7px 4px; font-size: .85rem; }
+      .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .product-grid, .services-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .brands { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .brand:last-child { grid-column: auto; }
+      .category { min-height: 150px; padding: 18px; }
+      .category__glyph { width: 56px; height: 56px; font-size: 1.9rem; }
+      .product__image { min-height: 120px; }
+      .product__body { padding: 14px; }
+      .service { padding: 16px; }
+      .contact-form input, .contact-form textarea { margin-bottom: 12px; }
+    }
+
+    /* В ландшафтной ориентации на достаточно широких смартфонах меню
+       показывается горизонтальной строкой прямо в шапке. */
+    @media (orientation: landscape) and (max-height: 550px) and (min-width: 800px) and (max-width: 1023px) {
+      .header__inner { gap: 14px; }
+      .menu-toggle { display: none; }
+      .nav { display: flex; position: static; flex-direction: row; align-items: center; justify-content: flex-end; gap: clamp(10px, 1.4vw, 18px); padding: 0; background: none; border: 0; box-shadow: none; max-height: none; overflow: visible; }
+      .nav a { padding: 6px 0; font-size: .84rem; white-space: nowrap; }
+      .cart { margin-left: 0; }
     }
 
     @media (orientation: landscape) and (max-height: 550px) and (max-width: 767px) {
       .nav { max-height: calc(100dvh - 68px); }
       .hero__content { padding-block: 30px 36px; }
+      .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .product-grid, .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+      .brands { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* Узкие смартфоны в ландшафтной ориентации: максимально плотные сетки. */
+    @media (orientation: landscape) and (max-height: 550px) and (max-width: 620px) {
+      .product-grid, .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .category { min-height: 130px; }
+      .product h3 { font-size: .88rem; }
     }
   </style>
 
@@ -873,6 +909,8 @@
     });
 
     document.getElementById("year").textContent = new Date().getFullYear();
+
+  </script>
 
   </script>
 
