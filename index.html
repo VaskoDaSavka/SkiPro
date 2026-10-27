@@ -182,13 +182,10 @@
 
 
 
-    /* 3. Главный экран: только CSS, без внешних изображений */
+    /* 3. Главный экран: фоновая фотография с затемняющим градиентом для читаемости текста */
 
-    .hero { position: relative; overflow: hidden; min-height: 650px; display: flex; align-items: center; background: linear-gradient(118deg, #061e35 3%, #0c4468 61%, #087f9e 100%); color: white; }
+    .hero { position: relative; overflow: hidden; min-height: 650px; display: flex; align-items: center; background: linear-gradient(105deg, rgba(4, 17, 32, .8) 0%, rgba(6, 30, 53, .55) 48%, rgba(10, 58, 88, .35) 100%), url("Изображения/Skiing.jpg") center / cover no-repeat; background-color: #061e35; color: white; }
 
-    .hero::before { content: ""; position: absolute; inset: 0; opacity: .27; background: repeating-linear-gradient(133deg, transparent 0 120px, rgba(255,255,255,.12) 121px 122px, transparent 123px 205px); }
-
-    .hero::after { content: ""; position: absolute; width: 650px; height: 650px; border: 75px solid rgba(255,255,255,.06); border-radius: 50%; right: -200px; top: -170px; box-shadow: 0 0 0 90px rgba(255,255,255,.035), 0 0 0 190px rgba(255,255,255,.025); }
 
     .hero__content { position: relative; z-index: 1; padding-block: 100px 115px; }
 
@@ -246,7 +243,9 @@
 
     .product { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: white; transition: transform .2s, box-shadow .2s; }
 
-    .product__image { min-height: 225px; padding: 20px; display: grid; place-items: center; position: relative; background: linear-gradient(150deg, #eef7fa, #d7e7ee); }
+    .product__image { height: 225px; padding: 16px; display: grid; place-items: center; position: relative; background: linear-gradient(150deg, #eef7fa, #d7e7ee); }
+
+    .product__image img { width: 100%; height: 100%; object-fit: contain; }
 
     .product__symbol { font-size: 4rem; transform: rotate(-14deg); filter: drop-shadow(10px 15px 9px rgba(8,43,72,.15)); }
 
@@ -388,7 +387,7 @@
 
       .product-grid, .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 
-      .product__image { min-height: 160px; }
+      .product__image { height: 160px; }
 
       .product__symbol { font-size: 3rem; }
 
@@ -460,7 +459,6 @@
       .section-head { margin-bottom: 26px; }
       .nav { max-height: calc(100dvh - 68px); padding: 14px; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
       .nav a { padding: 9px 4px; }
-      .hero::after { width: 430px; height: 430px; right: -250px; top: -95px; }
       .contacts__layout { gap: 30px; }
     }
 
@@ -475,7 +473,7 @@
       .catalog-grid { grid-template-columns: 1fr; }
       .category { min-height: 150px; }
       .product-grid, .services-grid { grid-template-columns: 1fr; }
-      .product__image { min-height: 190px; }
+      .product__image { height: 190px; }
       .brands { grid-template-columns: 1fr; }
       .brand:last-child { grid-column: auto; }
       .benefits { grid-template-columns: 1fr; }
@@ -502,7 +500,7 @@
       .brand:last-child { grid-column: auto; }
       .category { min-height: 150px; padding: 18px; }
       .category__glyph { width: 56px; height: 56px; font-size: 1.9rem; }
-      .product__image { min-height: 120px; }
+      .product__image { height: 120px; }
       .product__body { padding: 14px; }
       .service { padding: 16px; }
       .contact-form input, .contact-form textarea { margin-bottom: 12px; }
@@ -680,11 +678,11 @@
 
         <div class="product-grid">
 
-          <article class="product" data-id="ski-1" data-name="Speedmax Skate" data-price="58990"><div class="product__image"><span class="product__tag">Хит</span><span class="product__symbol" aria-hidden="true">⛷</span></div><div class="product__body"><span class="product__brand">Fischer</span><h3>Speedmax Skate</h3><strong class="product__price">58 990 ₽</strong><button class="btn btn--primary btn--small add-to-cart" type="button">В корзину +</button></div></article>
+          <article class="product" data-id="ski-1" data-name="Speedmax Skate" data-price="58990"><div class="product__image"><span class="product__tag">Хит</span><img src="Изображения/Fisher.jpg" alt="Лыжи Fischer Speedmax Skate"></div><div class="product__body"><span class="product__brand">Fischer</span><h3>Speedmax Skate</h3><strong class="product__price">58 990 ₽</strong><button class="btn btn--primary btn--small add-to-cart" type="button">В корзину +</button></div></article>
 
           <article class="product" data-id="boot-1" data-name="S/Race Classic" data-price="24990"><div class="product__image"><span class="product__tag">Топ</span><span class="product__symbol" aria-hidden="true">◈</span></div><div class="product__body"><span class="product__brand">Salomon</span><h3>S/Race Classic</h3><strong class="product__price">24 990 ₽</strong><button class="btn btn--primary btn--small add-to-cart" type="button">В корзину +</button></div></article>
 
-          <article class="product" data-id="ski-2" data-name="X-IUM Skate" data-price="42990"><div class="product__image"><span class="product__tag">Выбор Pro</span><span class="product__symbol" aria-hidden="true">❄</span></div><div class="product__body"><span class="product__brand">Rossignol</span><h3>X-IUM Skate</h3><strong class="product__price">42 990 ₽</strong><button class="btn btn--primary btn--small add-to-cart" type="button">В корзину +</button></div></article>
+          <article class="product" data-id="ski-2" data-name="X-IUM Skate" data-price="42990"><div class="product__image"><span class="product__tag">Выбор Pro</span><img src="Изображения/ski.jpg" alt="Лыжи Rossignol X-IUM Skate"></div><div class="product__body"><span class="product__brand">Rossignol</span><h3>X-IUM Skate</h3><strong class="product__price">42 990 ₽</strong><button class="btn btn--primary btn--small add-to-cart" type="button">В корзину +</button></div></article>
 
           <article class="product" data-id="pole-1" data-name="Carbon Race Poles" data-price="11990"><div class="product__image"><span class="product__tag">Новинка</span><span class="product__symbol" aria-hidden="true">╱</span></div><div class="product__body"><span class="product__brand">SkiPro Selection</span><h3>Carbon Race Poles</h3><strong class="product__price">11 990 ₽</strong><button class="btn btn--primary btn--small add-to-cart" type="button">В корзину +</button></div></article>
 
