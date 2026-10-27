@@ -33,7 +33,18 @@ jobs:
       # Получение файлов репозитория
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
+      - name: Validate website structure
+        shell: bash
+        run: |
+          test -s index.html
+          test -s style.css
+          test -d "Изображения"
+          grep -qi '<html' index.html
+          grep -qi '</html>' index.html
+          grep -qi 'href="style.css"' index.html
+          echo "Website structure check passed"
+          
       # Настройка GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
